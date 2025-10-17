@@ -1,1 +1,102 @@
-def swap(arr, i, j): # Swap elements at indices i and j temp = arr[i] arr[i] = arr[j] arr[j] = temp def heapify(arr, n, i): # Ensure subtree rooted at i satisfies max-heap property largest = i left = 2 * i + 1 right = 2 * i + 2 if left < n and arr[left] > arr[largest]: largest = left if right < n and arr[right] > arr[largest]: largest = right if largest != i: swap(arr, i, largest) heapify(arr, n, largest) def buildHeap(arr, n): # Convert array into a max heap for i in range(n // 2 - 1, -1, -1): heapify(arr, n, i) def heapSort(arr, n): # Perform heap sort in ascending order buildHeap(arr, n) for i in range(n - 1, 0, -1): swap(arr, 0, i) heapify(arr, i, 0) def insertElement(arr, value): # Add new element to the heap arr.append(value) print(f"Element {value} inserted successfully.") def display(arr): # Display array elements if len(arr) == 0: print("Heap is empty!") return print("Array elements: ", end="") for i in arr: print(i, end=" ") print() def main(): arr = [] n = 0 print("\n=====================================") print(" HEAP AND HEAP SORT PROGRAM ") print("=====================================") while True: print("\n--- MENU ---") print("1. Insert element") print("2. Display array") print("3. Build Max Heap") print("4. Perform Heap Sort") print("5. Exit") choice = int(input("Enter your choice: ")) if choice == 1: value = int(input("Enter value to insert: ")) insertElement(arr, value) n = len(arr) elif choice == 2: display(arr) elif choice == 3: if n == 0: print("Heap is empty!") else: buildHeap(arr, n) print("Heap built successfully (Max-Heap form):") display(arr) elif choice == 4: if n == 0: print("Heap is empty!") else: heapSort(arr, n) print("Array after Heap Sort (Ascending Order):") display(arr) elif choice == 5: print("Exiting program. Thank you!") break else: print("Invalid choice! Please try again.") print("\n=====================================") print(" PROGRAM EXPLANATION") print("=====================================") print("1. Heap: binary tree stored as array.") print("2. heapify() maintains max-heap property.") print("3. Heap sort moves largest to end repeatedly.") print("4. Sorted array obtained in ascending order.") print("5. Time complexity: O(n log n), Space: O(1).") print("\n--- PROGRAM ENDED SUCCESSFULLY ---") if __name__ == "__main__": main()
+def swap(arr, i, j):
+# Swap elements at indices i and j
+temp = arr[i]
+arr[i] = arr[j]
+arr[j] = temp
+
+def heapify(arr, n, i):
+# Ensure subtree rooted at i satisfies max-heap property
+largest = i
+left = 2 * i + 1
+right = 2 * i + 2
+
+if left < n and arr[left] > arr[largest]:  
+    largest = left  
+if right < n and arr[right] > arr[largest]:  
+    largest = right  
+
+if largest != i:  
+    swap(arr, i, largest)  
+    heapify(arr, n, largest)
+
+def buildHeap(arr, n):
+# Convert array into a max heap
+for i in range(n // 2 - 1, -1, -1):
+heapify(arr, n, i)
+
+def heapSort(arr, n):
+# Perform heap sort in ascending order
+buildHeap(arr, n)
+for i in range(n - 1, 0, -1):
+swap(arr, 0, i)
+heapify(arr, i, 0)
+
+def insertElement(arr, value):
+# Add new element to the heap
+arr.append(value)
+print(f"Element {value} inserted successfully.")
+
+def display(arr):
+# Display array elements
+if len(arr) == 0:
+print("Heap is empty!")
+return
+print("Array elements: ", end="")
+for i in arr:
+print(i, end=" ")
+print()
+
+def main():
+arr = []
+n = 0
+print("\n=====================================")
+print("       HEAP AND HEAP SORT PROGRAM     ")
+print("=====================================")
+
+while True:  
+    print("\n--- MENU ---")  
+    print("1. Insert element")  
+    print("2. Display array")  
+    print("3. Build Max Heap")  
+    print("4. Perform Heap Sort")  
+    print("5. Exit")  
+    choice = int(input("Enter your choice: "))  
+
+    if choice == 1:  
+        value = int(input("Enter value to insert: "))  
+        insertElement(arr, value)  
+        n = len(arr)  
+    elif choice == 2:  
+        display(arr)  
+    elif choice == 3:  
+        if n == 0:  
+            print("Heap is empty!")  
+        else:  
+            buildHeap(arr, n)  
+            print("Heap built successfully (Max-Heap form):")  
+            display(arr)  
+    elif choice == 4:  
+        if n == 0:  
+            print("Heap is empty!")  
+        else:  
+            heapSort(arr, n)  
+            print("Array after Heap Sort (Ascending Order):")  
+            display(arr)  
+    elif choice == 5:  
+        print("Exiting program. Thank you!")  
+        break  
+    else:  
+        print("Invalid choice! Please try again.")  
+
+print("\n=====================================")  
+print("           PROGRAM EXPLANATION")  
+print("=====================================")  
+print("1. Heap: binary tree stored as array.")  
+print("2. heapify() maintains max-heap property.")  
+print("3. Heap sort moves largest to end repeatedly.")  
+print("4. Sorted array obtained in ascending order.")  
+print("5. Time complexity: O(n log n), Space: O(1).")  
+print("\n--- PROGRAM ENDED SUCCESSFULLY ---")
+
+if name == "main":
+main()
